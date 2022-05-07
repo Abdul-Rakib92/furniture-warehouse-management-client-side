@@ -1,21 +1,33 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
+import InventoryItem from "../InventoryItem/InventoryItem";
+import "./InventoryItems.css";
 
 const InventoryItems = () => {
+  const [inventoryItems, setInventoryItems] = useState([]);
 
-    const [InventoryItems, setInventoryItems] = useState([]);
+  useEffect(() => {
+    fetch("inventories.json")
+      .then((res) => res.json())
+      .then((data) => setInventoryItems(data));
+  }, []);
 
-    useEffect( () => {
-        fetch('inventories.json')
-        .then(res => res.json())
-        .then(data => setInventoryItems(data))
-    }, [])
+  return (
+    <div className="container">
+      <div className="row">
+        <h2>Inventory Items</h2>
 
+        <div className="inventoryItems-container">
 
-    return (
-        <div>
-            <h2>this is Inventory Items</h2>
+          {inventoryItems.map(inventoryItem => 
+            <InventoryItem
+              key={inventoryItem.id}
+              inventoryItem={inventoryItem}
+            ></InventoryItem>
+          )}
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
 export default InventoryItems;

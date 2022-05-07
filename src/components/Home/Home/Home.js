@@ -5,7 +5,6 @@ import InventoryItems from '../InventoryItems/InventoryItems';
 const Home = () => {
     return (
         <>
-            <h2>This is Home</h2>
             <Banner></Banner>
             <InventoryItems></InventoryItems>
         </>

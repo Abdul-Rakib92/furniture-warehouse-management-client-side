@@ -1,8 +1,13 @@
 .inventoryItem{
+    width: 20rem;
+    height: 35rem;
     padding-bottom: 20px;
     border: 2px solid lightsalmon;
     border-radius: 15px;
     text-align: center;
     background-color: antiquewhite;
+}
 
+.inventoryItem img{
+    border-radius: 15px;
 }

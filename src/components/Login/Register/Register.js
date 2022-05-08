@@ -1,19 +1,23 @@
 import React from "react";
 import { Button, Form } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import './Register.css';
 import auth from "../../../firebase.init";
+import Social from "../Social/Social";
 
 const Register = () => {
 
 
-    const [
-        createUserWithEmailAndPassword,
-        user,
-        loading,
-        error,
-      ] = useCreateUserWithEmailAndPassword(auth);
+  const [
+    createUserWithEmailAndPassword,
+      user,
+      loading,
+      error,
+    ] = useCreateUserWithEmailAndPassword(auth, {sendEmailVerification: true});
+
+    const [updateProfile, updating, errorUpdate] = useUpdateProfile(auth);
+
 
     const navigate = useNavigate();
 
@@ -21,17 +25,22 @@ const Register = () => {
         navigate("/login");
     }
 
-    if(user){
-        navigate('/home');
-    }
+    if (user) {
+      console.log('user', user);  
+     }
 
-    const handleRegister = event =>{
+
+    const handleRegister = async (event) =>{
         event.preventDefault();
         const name = event.target.name.value;
         const email = event.target.email.value;
         const password = event.target.password.value;
 
-        createUserWithEmailAndPassword(email, password);
+      await createUserWithEmailAndPassword(email, password);
+      await updateProfile({ displayName: name });
+      console.log('Updated profile');
+      navigate('/home');
+
     }
 
 
@@ -71,7 +80,7 @@ const Register = () => {
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicCheckbox">
-          <Form.Check type="checkbox" label="Check me out" />
+          <Form.Check type="checkbox" name="terms" id="terms" label="Accept Terms and Conditions" />
         </Form.Group>
 
         <Button className="w-25 mb-3" variant="primary" type="submit">
@@ -80,6 +89,8 @@ const Register = () => {
       </Form>
 
       <p>Already have an account? <Link to="/login" className="text-decoration-none pe-auto text-primary" onClick={navigateLogin}>Please Login</Link></p>
+      
+      <Social></Social>
     </div>
   );
 };

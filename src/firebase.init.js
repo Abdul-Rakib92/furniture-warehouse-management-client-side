@@ -6,12 +6,12 @@ import {getAuth} from 'firebase/auth';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyD_V8yiZV0g7guu4sAnO6hGVVUh5gPqLic",
-  authDomain: "ahammed-furniture-warehouse.firebaseapp.com",
-  projectId: "ahammed-furniture-warehouse",
-  storageBucket: "ahammed-furniture-warehouse.appspot.com",
-  messagingSenderId: "186769210641",
-  appId: "1:186769210641:web:e68295517d33ea184520b0"
+  apiKey:process.env.REACT_APP_apiKey,
+  authDomain:process.env.REACT_APP_authDomain,
+  projectId:process.env.REACT_APP_projectId,
+  storageBucket:process.env.REACT_APP_storageBucket,
+  messagingSenderId:process.env.REACT_APP_messagingSenderId,
+  appId:process.env.REACT_APP_appId,
 };
 
 // Initialize Firebase

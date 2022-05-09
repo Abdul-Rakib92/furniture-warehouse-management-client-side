@@ -4,7 +4,7 @@ import './InventoryItem.css';
 
 const InventoryItem = ({inventoryItem}) => {
 
-    const {id, name, img, description, price, quantity, supplierName} = inventoryItem;
+    const {_id, name, img, description, price, quantity, supplierName} = inventoryItem;
     const navigate = useNavigate();
 
     const navigateToInventoryItemDetail = id =>{
@@ -13,7 +13,7 @@ const InventoryItem = ({inventoryItem}) => {
 
     return (
         <div className='g-5 col-sm-12 col-md-6 col-lg-4'>
-            <div className='card inventoryItem'>
+            <div className='card inventory-item'>
                 <img src={img} className='card-img-top w-100' alt="" />
                 <div className='card-body'>
                     <h3 className='card-title'>{name}</h3>
@@ -21,7 +21,7 @@ const InventoryItem = ({inventoryItem}) => {
                     <p>Quantity: {quantity}</p>
                     <p>SupplierName: {supplierName}</p>
                     <p className='card-text'>{description}</p>
-                    <button onClick={() => navigateToInventoryItemDetail(id)} className='btn btn-primary'>Update</button>
+                    <button onClick={() => navigateToInventoryItemDetail(_id)} className='btn btn-primary'>Update</button>
                 </div>
             </div>
         </div>

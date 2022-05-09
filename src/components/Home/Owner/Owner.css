@@ -1,0 +1,12 @@
+.checkout-text h5{
+    color: rgb(220, 1, 1);
+}
+
+h1,h5,p{
+    margin-top: 10px;
+}
+
+.checkout-text p{
+    font-size: 20px;
+    margin-top: 10px;
+}

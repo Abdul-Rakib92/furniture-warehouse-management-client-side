@@ -5,6 +5,7 @@ import './InventoryItem.css';
 const InventoryItem = ({inventoryItem}) => {
 
     const {_id, name, img, description, price, quantity, supplierName} = inventoryItem;
+    
     const navigate = useNavigate();
 
     const navigateToInventoryItemDetail = id =>{

@@ -1,6 +1,6 @@
 .inventory-item{
-    width: 20rem;
-    height: 35rem;
+    width: 100%;
+    height: 38rem;
     padding-bottom: 20px;
     border: 2px solid lightsalmon;
     border-radius: 15px;

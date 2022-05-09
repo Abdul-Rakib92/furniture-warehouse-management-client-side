@@ -8,6 +8,7 @@ import InventoryItemDetail from './components/InventoryItemDetail/InventoryItemD
 import Login from './components/Login/Login/Login';
 import Register from './components/Login/Register/Register';
 import RequireAuth from './components/Login/RequireAuth/RequireAuth';
+import ManageInventories from './components/ManageInventories/ManageInventories';
 import Footer from './components/Shared/Footer/Footer';
 import Header from './components/Shared/Header/Header';
 import NotFound from './components/Shared/NotFound/NotFound';
@@ -29,6 +30,12 @@ function App() {
         <Route path='/additem' element={
           <RequireAuth>
             <AddItem></AddItem>
+          </RequireAuth>
+        }></Route>
+
+        <Route path='/manageInventories' element={
+          <RequireAuth>
+            <ManageInventories></ManageInventories>
           </RequireAuth>
         }></Route>
 

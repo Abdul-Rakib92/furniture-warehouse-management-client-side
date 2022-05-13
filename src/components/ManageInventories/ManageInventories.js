@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import useInventories from "../../hooks/useInventories";
 
 const ManageInventories = () => {
@@ -8,6 +9,7 @@ const ManageInventories = () => {
     const proceed = window.confirm('Are you sure?');
     if(proceed){
       const url = `http://localhost:5000/inventoryItem/${id}`;
+      console.log(url);
       fetch(url, {
         method: 'DELETE'
       })
@@ -23,11 +25,12 @@ const ManageInventories = () => {
   return (
     <div className="row">
       <h2 className="text-center">This is manage Inventories</h2>
+
+      <Link to={`/additem`}>
+          <button className="btn btn-primary w-25 d-block border-0 rounded-2 p-2 mx-auto mt-5">Add New Item</button>
+        </Link>
       {inventoryItems.map((inventoryItem) => (
         <div className="g-5 col-sm-12 col-md-6 col-lg-4" key={inventoryItem._id}>
-
-
-            {/* <h5>{inventoryItem.name} <button onClick={() => handleDelete(inventoryItem.id)}>X</button></h5> */}
 
 
           <div className="container mt-5">
@@ -48,7 +51,7 @@ const ManageInventories = () => {
 
                 <button
                   className="bg-primary w-25 d-block border-0 rounded-2 p-2 mx-auto mb-2"
-                  onClick={() => handleDelete(inventoryItem.id)}
+                  onClick={() => handleDelete(inventoryItem._id)}
                 >
                   Delete
                 </button>

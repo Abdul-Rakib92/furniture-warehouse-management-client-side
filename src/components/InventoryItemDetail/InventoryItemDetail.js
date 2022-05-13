@@ -1,18 +1,66 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import useInventoryDetail from "../../hooks/useInventoryDetail";
 import "./InventoryItemDetail.css";
 
 const InventoryItemDetail = () => {
   const { inventoryItemId } = useParams();
-  const [inventoryItem, setInventoryItem] = useState({});
+  const [inventoryItem] = useInventoryDetail(inventoryItemId);
+  
 
-  useEffect(() => {
+  const handleUpdateUser = event => {
+    event.preventDefault();
+    const quantity = event.target.quantity.value;
+    const updatedInventoryItem = {quantity, inventoryItem};
+    
+
+    const url = `http://localhost:5000/inventoryItem/${inventoryItemId}`;
+    console.log(url)
+    // console.log(newQuantity);
+    fetch(url, {
+      method: 'PUT',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(updatedInventoryItem)
+    })
+    .then(res => res.json())
+    .then(data => {
+      console.log('success', data);
+      alert('users added successfully!');
+      event.target.reset();
+
+    })
+
+  }
+  let minusQuantity = ''
+  const handleDelivery = event => {
+    event.preventDefault();
+    const quantity = event.target.quantity.value;
+    const minusQuantity = parseInt(inventoryItem.quantity-1)
+
+    const deliveryInventoryItem = {quantity, minusQuantity}
+
+
     const url = `http://localhost:5000/inventoryItem/${inventoryItemId}`;
 
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => setInventoryItem(data));
-  }, []);
+    fetch(url, {
+      method: 'PUT',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(deliveryInventoryItem)
+    })
+    .then(res => res.json())
+    .then(data => {
+      console.log('success', data);
+    alert('users added successfully!');
+    event.target.reset();
+    })
+    
+  }
+
+  
 
   return (
     <div>
@@ -28,11 +76,19 @@ const InventoryItemDetail = () => {
             <p>Quantity: {inventoryItem.quantity}</p>
             <p>SupplierName: {inventoryItem.supplierName}</p>
             <p className="card-text">{inventoryItem.description}</p>
-            <button className='btn btn-primary d-block mb-3 mx-auto' >Delivery</button>
+            <button onClick={() =>handleDelivery(inventoryItemId)} className='btn btn-primary d-block mb-3 mx-auto' >Delivery</button>
+
 
             <div>
-            <input className="mb-3 d-block mx-auto" type="number" name="" id="" />
-            <button className='btn btn-primary d-block mb-3 mx-auto'>Restock</button>
+              <form onSubmit={handleUpdateUser}>
+              <input className="mb-3 d-block mx-auto" type="text" name="quantity" placeholder="Quantity" id="" />
+              <input className='btn btn-primary d-block mb-3 mx-auto' type="submit" value="Restock" />
+              </form>
+
+              <Link to={`/manageInventories`}>
+                    <button className='btn btn-primary'>Manage Inventory</button>
+                </Link>
+            
             </div>
           </div>
         </div>

@@ -1,6 +1,5 @@
 [
     {
-        "id": 1,
         "name": "Modern Green Sofa",
         "price": "45000",
         "description": "This modern sofa is very unique living room designable sofa.",
@@ -9,7 +8,6 @@
         "img": "https://i.ibb.co/2qkjCT6/1.jpg"
     },
     {
-        "id": 2,
         "name": "Yellow And Black Living Room Sofa",
         "price": "55000",
         "description": "This modern sofa is  living room designable sofa & this sofa color is also very unique.",
@@ -18,7 +16,6 @@
         "img": "https://i.ibb.co/7RDP1GY/2.jpg"
     },
     {
-        "id": 3,
         "name": "Gray 2 seat Sofa",
         "price": "50000",
         "description": "This is vintage Modern sofa, it can be use living room, office, library etc.",
@@ -27,7 +24,6 @@
         "img": "https://i.ibb.co/y5K5HVd/3.jpg"
     },
     {
-        "id": 4,
         "name": "Adonica 3 Seater Sofa Set ",
         "price": "35000",
         "description": "This modern sofa is very colorable and beautiful, it can be use living room or office.",
@@ -36,7 +32,6 @@
         "img": "https://i.ibb.co/jfWmDYH/4.jpg"
     },
     {
-        "id": 5,
         "name": "Red Leather 2-Seat Couch",
         "price": "25000",
         "description": "This Couch is very beautiful and its suitable for personal room.",
@@ -45,7 +40,6 @@
         "img": "https://i.ibb.co/LdTj6HN/5.jpg"
     },
     {
-        "id": 6,
         "name": "Gray Leather Sectional Sofa",
         "price": "65000",
         "description": "This sofa is very good looking. This sofa is for living room or penthouse.",

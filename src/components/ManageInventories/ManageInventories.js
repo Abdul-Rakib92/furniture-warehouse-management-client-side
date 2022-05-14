@@ -29,6 +29,7 @@ const ManageInventories = () => {
       <Link to={`/additem`}>
           <button className="btn btn-primary w-25 d-block border-0 rounded-2 p-2 mx-auto mt-5">Add New Item</button>
         </Link>
+        
       {inventoryItems.map((inventoryItem) => (
         <div className="g-5 col-sm-12 col-md-6 col-lg-4" key={inventoryItem._id}>
 
@@ -50,11 +51,12 @@ const ManageInventories = () => {
                 <p className="card-text">{inventoryItem.description}</p>
 
                 <button
-                  className="bg-primary w-25 d-block border-0 rounded-2 p-2 mx-auto mb-2"
+                  className="btn btn-danger w-25 d-block border-0 rounded-2 p-2 mx-auto mb-2"
                   onClick={() => handleDelete(inventoryItem._id)}
                 >
                   Delete
                 </button>
+                
               </div>
             </div>
           </div>

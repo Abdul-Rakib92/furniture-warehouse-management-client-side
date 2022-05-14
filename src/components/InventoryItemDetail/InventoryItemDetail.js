@@ -33,13 +33,19 @@ const InventoryItemDetail = () => {
     })
 
   }
-  let minusQuantity = ''
+
+  const [quantity, setQuantity] = useState(0)
+
   const handleDelivery = event => {
     event.preventDefault();
-    const quantity = event.target.quantity.value;
-    const minusQuantity = parseInt(inventoryItem.quantity-1)
+    // const quantity = event.target.quantity.value;
+    // const minusQuantity = parseInt(inventoryItem.quantity-1)
 
-    const deliveryInventoryItem = {quantity, minusQuantity}
+    // const deliveryInventoryItem = {quantity, minusQuantity}
+
+    const deliveryInventoryItem = inventoryItem.quantity(quantity-1);
+
+
 
 
     const url = `http://localhost:5000/inventoryItem/${inventoryItemId}`;
@@ -56,6 +62,7 @@ const InventoryItemDetail = () => {
       console.log('success', data);
     alert('users added successfully!');
     event.target.reset();
+    setQuantity(data)
     })
     
   }
@@ -76,7 +83,8 @@ const InventoryItemDetail = () => {
             <p>Quantity: {inventoryItem.quantity}</p>
             <p>SupplierName: {inventoryItem.supplierName}</p>
             <p className="card-text">{inventoryItem.description}</p>
-            <button onClick={() =>handleDelivery(inventoryItemId)} className='btn btn-primary d-block mb-3 mx-auto' >Delivery</button>
+            
+            <button onClick={() => handleDelivery(inventoryItem.inventoryItemId)} className='btn btn-primary d-block mb-3 mx-auto' >Delivery</button>
 
 
             <div>
@@ -86,7 +94,11 @@ const InventoryItemDetail = () => {
               </form>
 
               <Link to={`/manageInventories`}>
-                    <button className='btn btn-primary'>Manage Inventory</button>
+                    <button className='btn btn-primary me-3'>Manage Inventory</button>
+                </Link>
+
+                <Link to={`/select/${inventoryItemId}`}>
+                    <button className='btn btn-primary'>Select</button>
                 </Link>
             
             </div>

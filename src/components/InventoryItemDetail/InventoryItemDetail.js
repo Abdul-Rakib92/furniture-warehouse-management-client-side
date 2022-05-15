@@ -14,7 +14,7 @@ const InventoryItemDetail = () => {
     const updatedInventoryItem = {quantity, inventoryItem};
     
 
-    const url = `http://localhost:5000/inventoryItem/${inventoryItemId}`;
+    const url = `https://stormy-island-92577.herokuapp.com/inventoryItem/${inventoryItemId}`;
     console.log(url)
     // console.log(newQuantity);
     fetch(url, {
@@ -38,17 +38,10 @@ const InventoryItemDetail = () => {
 
   const handleDelivery = event => {
     event.preventDefault();
-    // const quantity = event.target.quantity.value;
-    // const minusQuantity = parseInt(inventoryItem.quantity-1)
-
-    // const deliveryInventoryItem = {quantity, minusQuantity}
-
+    
     const deliveryInventoryItem = inventoryItem.quantity(quantity-1);
 
-
-
-
-    const url = `http://localhost:5000/inventoryItem/${inventoryItemId}`;
+    const url = `https://stormy-island-92577.herokuapp.com/inventoryItem/${inventoryItemId}`;
 
     fetch(url, {
       method: 'PUT',

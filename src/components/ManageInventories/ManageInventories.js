@@ -8,7 +8,7 @@ const ManageInventories = () => {
   const handleDelete = id =>{
     const proceed = window.confirm('Are you sure?');
     if(proceed){
-      const url = `http://localhost:5000/inventoryItem/${id}`;
+      const url = `https://stormy-island-92577.herokuapp.com/inventoryItem/${id}`;
       console.log(url);
       fetch(url, {
         method: 'DELETE'

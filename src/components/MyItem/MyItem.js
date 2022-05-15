@@ -13,7 +13,7 @@ const MyItem = () => {
   useEffect(() => {
     const getMyItems = async () => {
       const email = user.email;
-      const url = `http://localhost:5000/myItem?email=${email}`;
+      const url = `https://stormy-island-92577.herokuapp.com/myItem?email=${email}`;
       const { data } = await axios.get(url);
       setMyItems(data);
     };
@@ -23,7 +23,7 @@ const MyItem = () => {
   const handleDelete = (id) => {
     const proceed = window.confirm("Are you sure?");
     if (proceed) {
-      const url = `http://localhost:5000/myItem/${id}`;
+      const url = `https://stormy-island-92577.herokuapp.com/myItem/${id}`;
       console.log(url);
       fetch(url, {
         method: "DELETE",
@@ -42,7 +42,6 @@ const MyItem = () => {
   return (
     <div className="row">
       <h2>Selected Items: {myItems.length}</h2>
-      {/* <Items></Items> */}
       <h2 className="text-primary text-center mt-5">My Items</h2>
 
       {myItems.map((myItem) => (
@@ -68,7 +67,6 @@ const MyItem = () => {
               </div>
             </div>
           </div>
-          {/* <h5>{myItem.name} <button onClick={() => handleDelete(service._id)}>X</button></h5> */}
         </div>
       ))}
     </div>

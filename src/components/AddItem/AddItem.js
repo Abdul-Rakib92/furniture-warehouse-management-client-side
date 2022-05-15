@@ -13,7 +13,7 @@ const AddItem = () => {
   const { register, handleSubmit } = useForm();
   const onSubmit = (data, event) => {
     console.log(data);
-    const url = `http://localhost:5000/inventoryItem`;
+    const url = `https://stormy-island-92577.herokuapp.com/inventoryItem`;
     fetch(url, {
         method: 'POST',
         headers: {
@@ -38,7 +38,7 @@ const AddItem = () => {
       img: event.target.img.value
 
     };
-    axios.post('http://localhost:5000/myItem', myItem)
+    axios.post('https://stormy-island-92577.herokuapp.com/myItem', myItem)
     .then((response) => {
       console.log(response);
       const {data} = response;
@@ -48,10 +48,7 @@ const AddItem = () => {
       }
     });
 
-
   };
-
-  
 
 
   return (
